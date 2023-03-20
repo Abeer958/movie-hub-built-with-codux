@@ -1,23 +1,20 @@
-import logo from './assets/logo.svg';
 import styles from './App.module.scss';
+import { Menu } from './components/menu/menu';
+import { Favorite } from './components/favorite/favorite';
+import { Content } from './components/content/content';
+import { FavoriteContextProvider } from './context/FavoriteContext';
+import { SearchContextProvider } from './context/SearchContext';
 
 function App() {
     return (
         <div className={styles.App}>
-            <header className={styles['App-header']}>
-                <img src={logo} className={styles['App-logo']} alt="logo" />
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <a
-                    className={styles['App-link']}
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
+            <SearchContextProvider>
+            <Menu />
+            <FavoriteContextProvider>
+                <Content />
+                <Favorite />
+            </FavoriteContextProvider>
+            </SearchContextProvider>
         </div>
     );
 }
